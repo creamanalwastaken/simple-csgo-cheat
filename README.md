@@ -9,5 +9,6 @@
 IN THHAT PICTURE YOUY CAN SEEE OP FEATURE CALLED COCKS RADAR OK OK????
 
 młody jerzor 😎🤙
-RAT FREE 
+RAT FREE
+
 ![racisko](/img/kulat.png)
