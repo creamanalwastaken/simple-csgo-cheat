@@ -39,11 +39,11 @@ namespace ejakulatExternal
             Console.WriteLine(mem.proc.ProcessName.ToUpper(), Console.ForegroundColor=ConsoleColor.DarkRed);
             Console.WriteLine(Convert.ToString(localplayer), Console.ForegroundColor = ConsoleColor.DarkRed);
             Console.WriteLine(Convert.ToString(forcejump), Console.ForegroundColor = ConsoleColor.DarkRed); Console.WriteLine();
-            Thread.Sleep(30);
+
             Console.WriteLine("BHOP ON", Console.ForegroundColor = ConsoleColor.DarkGreen);
-            Thread.Sleep(30);
+
             Console.WriteLine("RADAR HACK ON", Console.ForegroundColor = ConsoleColor.DarkGreen);
-            Thread.Sleep(30);
+
             Console.WriteLine("NO FLASH ON", Console.ForegroundColor = ConsoleColor.DarkGreen);
             #endregion
 
