@@ -5,5 +5,8 @@
 - RUN THAT FUNNY EXE
 - ENJOY
 
+#### ONE of the kEy FEATURES OKOK ? ![ilikecocks](/img/eja.png)
+
 młody jerzor 😎🤙
-RAT FREE 
+
+RAT FREE ![racisko](/img/kulat.png)
