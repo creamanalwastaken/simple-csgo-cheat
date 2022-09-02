@@ -1,2 +1,9 @@
-# simple-csgo-cheat
+## FUCKING EJAKULAT
+
+### HOW TO USE OK OK?
+- OPEN CSGO 😎
+- RUN THAT FUNNY EXE
+- ENJOY
+
 młody jerzor 😎🤙
+RAT FREE 
