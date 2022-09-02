@@ -1,1 +1,1 @@
-gowno
+and
