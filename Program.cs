@@ -29,66 +29,65 @@ namespace ejakulatExternal
         #endregion
         static void Main(string[] args)
         {
-            Memory mem = new Memory();
-            mem.GetProcess("csgo");
-            var client = mem.GetModuleBase("client.dll");
 
-            #region CONSOLE
-            Console.Title = $"{mem.proc.Id} ${mem.proc.SessionId}";
+                Memory mem = new Memory();
+                mem.GetProcess("csgo");
+                var client = mem.GetModuleBase("client.dll");
 
-            Console.WriteLine(mem.proc.ProcessName.ToUpper(), Console.ForegroundColor=ConsoleColor.DarkRed);
-            Console.WriteLine(Convert.ToString(localplayer), Console.ForegroundColor = ConsoleColor.DarkRed);
-            Console.WriteLine(Convert.ToString(forcejump), Console.ForegroundColor = ConsoleColor.DarkRed); Console.WriteLine();
+                #region CONSOLE
+                Console.Title = $"{mem.proc.Id} ${mem.proc.SessionId}";
 
-            Console.WriteLine("BHOP ON", Console.ForegroundColor = ConsoleColor.DarkGreen);
+                Console.WriteLine(mem.proc.ProcessName.ToUpper(), Console.ForegroundColor = ConsoleColor.DarkRed);
+                Console.WriteLine(Convert.ToString(localplayer), Console.ForegroundColor = ConsoleColor.DarkRed);
+                Console.WriteLine(Convert.ToString(forcejump), Console.ForegroundColor = ConsoleColor.DarkRed); Console.WriteLine();
+                Thread.Sleep(30);
+                Console.Write("INJECTED... ", Console.ForegroundColor = ConsoleColor.DarkGreen);
+                #endregion
 
-            Console.WriteLine("RADAR HACK ON", Console.ForegroundColor = ConsoleColor.DarkGreen);
+                Thread ciach = new Thread(bajera) { IsBackground = true };
+                ciach.Start();
 
-            Console.WriteLine("NO FLASH ON", Console.ForegroundColor = ConsoleColor.DarkGreen);
-            #endregion
-
-            Thread ciach = new Thread(bajera) { IsBackground = true};
-            ciach.Start();
-            
-            while (true)
-            {
-                for (int i = 1; i <= 64; i++)
-                {
-                    var EntityBuffer = mem.ReadPointer(client, dwEntityList + i * 0x10);
-                    var shuldIE = mem.ReadPointer(client, teamNum);
-                    var nyga = mem.ReadPointer(EntityBuffer, teamNum);
-                    if(nyga == shuldIE)
-                        continue;
-                    mem.WriteBytes(EntityBuffer, mSpotted, BitConverter.GetBytes(1));
-                }
-                var buffer = mem.ReadPointer(client, localplayer);
-                mem.WriteBytes(buffer,m_flFlashDuration, BitConverter.GetBytes(0));
-                
-
-                Thread.Sleep(1);
-            }
-            
-            Console.ReadLine();
-
-            void bajera()
-            {
                 while (true)
                 {
-                    if(GetAsyncKeyState(Keys.Space) < 0)
+                    for (int i = 1; i <= 64; i++)
                     {
-                        var buffer = mem.ReadPointer(client, localplayer);
-                        var flag = BitConverter.ToInt32(mem.ReadBytes(buffer, mflags, 4), 0);
-
-                        if(flag == 257 || flag == 263)
-                        {
-                            mem.WriteBytes(client, forcejump, BitConverter.GetBytes(5));
-                            Thread.Sleep(1);
-                            mem.WriteBytes(client, forcejump, BitConverter.GetBytes(4));
-                        }
+                        var EntityBuffer = mem.ReadPointer(client, dwEntityList + i * 0x10);
+                        var shuldIE = mem.ReadPointer(client, teamNum);
+                        var nyga = mem.ReadPointer(EntityBuffer,teamNum);
+                        if (nyga == shuldIE)
+                            continue;
+                        mem.WriteBytes(EntityBuffer, mSpotted, BitConverter.GetBytes(1));
                     }
-                    System.Threading.Thread.Sleep(1);
+                    var buffer = mem.ReadPointer(client, localplayer);
+                    mem.WriteBytes(buffer, m_flFlashDuration, BitConverter.GetBytes(0));
+
+
+                    Thread.Sleep(1);
+                }
+
+                Console.ReadLine();
+
+                void bajera()
+                {
+                    while (true)
+                    {
+                        if (GetAsyncKeyState(Keys.Space) < 0)
+                        {
+                            var buffer = mem.ReadPointer(client, localplayer);
+                            var flag = BitConverter.ToInt32(mem.ReadBytes(buffer, mflags, 4), 0);
+
+                            if (flag == 257 || flag == 263)
+                            {
+                                mem.WriteBytes(client, forcejump, BitConverter.GetBytes(5));
+                                Thread.Sleep(1);
+                                mem.WriteBytes(client, forcejump, BitConverter.GetBytes(4));
+                            }
+                        }
+                        System.Threading.Thread.Sleep(1);
+                    }
                 }
             }
-        }
+
+        } 
     }
-}
+
