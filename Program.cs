@@ -49,7 +49,7 @@ namespace ejakulatExternal
 
                 while (true)
                 {
-                    for (int i = 1; i <= 64; i++)
+                    for (int i = 0; i <= 64; i++)
                     {
                         var EntityBuffer = mem.ReadPointer(client, dwEntityList + i * 0x10);
                         var shuldIE = mem.ReadPointer(client, teamNum);
