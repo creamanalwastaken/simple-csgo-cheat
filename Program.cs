@@ -17,11 +17,11 @@ namespace ejakulatExternal
         #endregion
 
         #region OFFSETS
-        const int localplayer = 0xDC14CC;
-        const int forcejump = 0x528791C;
+        const int localplayer = 0xDE6964;
+        const int forcejump = 0x52B7BCC;
         const int mflags = 0x104;
 
-        const int dwEntityList = 0x4DDD93C;
+        const int dwEntityList = 0x4DFBE44;
         const int teamNum = 0xF4;
         const int mSpotted = 0x93D;
 
